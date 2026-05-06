@@ -1,7 +1,82 @@
+<<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HYPER SENSES | Login Ferroviário</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <div class="brand-icon">
+                <div class="icon-wrapper">
+                    <i class="fas fa-train"></i>
+                    <div class="pulse-ring"></div>
+                </div>
+            </div>
+            <div class="brand-text">
+                <h1 class="hyper-title">HYPER <span>SENSES</span></h1>
+                <div class="sub-brand">ferroviário</div>
+            </div>
+            <div class="badge-system">
+                <i class="fas fa-microchip"></i> Sistema de Monitoramento em Tempo Real
+                <i class="fas fa-circle" style="font-size: 0.4rem; margin-left: 8px; color: #0ff; text-shadow: 0 0 5px #0ff;"></i>
+            </div>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="matricula" placeholder="Matrícula do ferroviário" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="senha" placeholder="Senha de acesso" required>
+            </div>
+
+            <div class="options">
+                <label class="remember">
+                    <input type="checkbox" id="rememberCheck"> Manter conectado
+                </label>
+                <div class="forgot">
+                    <a href="#" id="forgotLink">Esqueci minha senha</a>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> Acessar Hyper Senses
+            </button>
+        </form>
+
+        <div id="feedback" class="feedback-message"></div>
+        
+        <div class="metrics-panel">
+            <div class="metric">
+                <i class="fas fa-chart-line"></i>
+                <span>Baixo risco</span>
+                <strong>0 acidentes</strong>
+            </div>
+            <div class="metric">
+                <i class="fas fa-flag-checkered"></i>
+                <span>Passagens</span>
+                <strong>50 monitoradas</strong>
+            </div>
+            <div class="metric">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Entraves</span>
+                <strong>80 ações</strong>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <i class="fas fa-robot"></i> HYPER SENSES • Rede IoT • Visão Computacional • Preditiva
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
