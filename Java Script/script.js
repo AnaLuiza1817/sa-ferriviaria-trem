@@ -1,4 +1,5 @@
 let usuarios = JSON.parse(localStorage.getItem('hyperSensesUsers')) || [];
+
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -80,17 +81,18 @@ registerForm.addEventListener('submit', (e) => {
         showFeedback('As senhas não coincidem!', 'error');
         return;
     }
-
+    
     if (usuarios.find(u => u.matricula === matricula)) {
         showFeedback('Matrícula já cadastrada!', 'error');
         return;
     }
-
+    
     if (usuarios.find(u => u.email === email)) {
         showFeedback('Email já cadastrado!', 'error');
         return;
     }
-        const novoUsuario = {
+    
+    const novoUsuario = {
         id: Date.now(),
         nome,
         matricula,
@@ -103,9 +105,9 @@ registerForm.addEventListener('submit', (e) => {
     localStorage.setItem('hyperSensesUsers', JSON.stringify(usuarios));
     
     showFeedback('Cadastro realizado com sucesso! Faça login para continuar.', 'success');
-
+    
     registerForm.reset();
-
+    
     setTimeout(() => {
         document.querySelector('[data-tab="login"]').click();
     }, 2000);
@@ -144,10 +146,10 @@ loginForm.addEventListener('submit', (e) => {
             timestamp: Date.now()
         }));
     }
-    
+  
     setTimeout(() => {
         alert(`Redirecionando para o dashboard do sistema Hyper Senses...\nBem-vindo(a) ${usuario.nome}!`);
-
+       
     }, 1500);
     
     loginForm.reset();
