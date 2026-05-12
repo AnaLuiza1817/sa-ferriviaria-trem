@@ -33,12 +33,14 @@
     font-size: 24px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .logo-area span {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
