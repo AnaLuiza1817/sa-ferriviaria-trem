@@ -1,13 +1,12 @@
-<<!-- index.html -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>HYPER SENSES | Login Ferroviário</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper Senses - Sistema Ferroviário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="login-container">
@@ -28,7 +27,12 @@
             </div>
         </div>
 
-        <form id="loginForm">
+        <div class="auth-tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="register">Cadastro</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
             <div class="input-group">
                 <i class="fas fa-id-card"></i>
                 <input type="text" id="matricula" placeholder="Matrícula do ferroviário" autocomplete="off" required>
@@ -49,6 +53,37 @@
 
             <button type="submit" class="btn-login">
                 <i class="fas fa-sign-in-alt"></i> Acessar Hyper Senses
+            </button>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="regNome" placeholder="Nome completo" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="regMatricula" placeholder="Matrícula" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="regEmail" placeholder="E-mail (deve conter @)" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="regTelefone" placeholder="Número de telefone" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="regSenha" placeholder="Senha (mínimo 6 caracteres)" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="regConfirmSenha" placeholder="Confirmar senha" required>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-user-plus"></i> Criar Cadastro
             </button>
         </form>
 
