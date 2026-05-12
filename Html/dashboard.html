@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper Senses - Dashboard Operacional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="logo-area">
+                <i class="fas fa-train"></i>
+                <h2>HYPER <span>SENSES</span></h2>
+                <span class="badge">Operacional</span>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="userName">Carregando...</span>
+                <span id="userMatricula" class="user-matricula"></span>
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <small>Localização do Trem</small>
+                    <strong id="tremLocalizacao">KM 156,8</strong>
+                </div>
+            </div>
+            <div class="status-card">
+                <i class="fas fa-road"></i>
+                <div>
+                    <small>Estado do Trilho</small>
+                    <strong id="trilhoStatus">Normal</strong>
+                </div>
+            </div>
+            <div class="status-card">
+                <i class="fas fa-chart-line"></i>
+                <div>
+                    <small>Velocidade</small>
+                    <strong id="tremVelocidade">85 km/h</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Registrar Ocorrência</h3>
+                </div>
+                <form id="ocorrenciaForm">
+                    <div class="form-group">
+                        <label>Tipo de Ocorrência *</label>
+                        <select id="tipoOcorrencia" required>
+                            <option value="">Selecione...</option>
+                            <option value="acidente">🚨 Acidente</option>
+                            <option value="quase-acidente">⚠️ Quase Acidente</option>
+                            <option value="falha-tecnica">🔧 Falha Técnica</option>
+                            <option value="obstrucao">🚧 Obstrução na Via</option>
+                            <option value="outro">📝 Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Localização *</label>
+                        <input type="text" id="localizacaoOcorrencia" placeholder="Ex: KM 157,3 - Próximo à estação Central" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descrição *</label>
+                        <textarea id="descricaoOcorrencia" rows="3" placeholder="Descreva detalhadamente o ocorrido..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gravidade</label>
+                        <select id="gravidade">
+                            <option value="baixa">🟢 Baixa</option>
+                            <option value="media">🟡 Média</option>
+                            <option value="alta">🔴 Alta</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Registrar Ocorrência
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-road"></i>
+                    <h3>Condição dos Trilhos</h3>
+                </div>
+                <form id="trilhoForm">
+                    <div class="form-group">
+                        <label>Status do Trilho *</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="statusTrilho" value="normal" checked>
+                                <i class="fas fa-check-circle"></i> Normal
+                            </label>
+                            <label>
+                                <input type="radio" name="statusTrilho" value="anormal">
+                                <i class="fas fa-exclamation-circle"></i> Anormal
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="problemaTrilhoGroup" style="display: none;">
+                        <label>Descreva o problema:</label>
+                        <textarea id="problemaTrilho" rows="2" placeholder="Ex: Trilho trincado, desalinhamento, etc..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Localização do Trecho</label>
+                        <input type="text" id="localTrilho" placeholder="Ex: KM 150 ao KM 155">
+                    </div>
+
+                    <button type="submit" class="btn-secondary">
+                        <i class="fas fa-sync-alt"></i> Atualizar Status
+                    </button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Localização do Trem</h3>
+                </div>
+                <form id="tremForm">
+                    <div class="form-group">
+                        <label>KM Atual *</label>
+                        <input type="text" id="kmAtual" placeholder="Ex: 157,3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Próxima Estação</label>
+                        <select id="proximaEstacao">
+                            <option value="Estação Central">Estação Central</option>
+                            <option value="Estação Norte">Estação Norte</option>
+                            <option value="Estação Sul">Estação Sul</option>
+                            <option value="Estação Leste">Estação Leste</option>
+                            <option value="Estação Oeste">Estação Oeste</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Velocidade (km/h)</label>
+                        <input type="number" id="velocidade" placeholder="Velocidade atual" min="0" max="120">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sentido</label>
+                        <select id="sentido">
+                            <option value="Norte">⬆️ Norte</option>
+                            <option value="Sul">⬇️ Sul</option>
+                            <option value="Leste">➡️ Leste</option>
+                            <option value="Oeste">⬅️ Oeste</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-secondary">
+                        <i class="fas fa-location-dot"></i> Atualizar Localização
+                    </button>
+                </form>
+            </div>
+
+            <div class="card card-full">
+                <div class="card-header">
+                    <i class="fas fa-list-alt"></i>
+                    <h3>Ocorrências Registradas</h3>
+                    <button id="limparHistorico" class="btn-clear">
+                        <i class="fas fa-trash-alt"></i> Limpar Histórico
+                    </button>
+                </div>
+                <div id="listaOcorrencias" class="ocorrencias-list">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>Nenhuma ocorrência registrada ainda</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-stats">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Estatísticas</h3>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Acidentes</span>
+                        <span class="stat-value" id="totalAcidentes">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Alertas Ativos</span>
+                        <span class="stat-value" id="totalAlertas">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Trilhos Normais</span>
+                        <span class="stat-value" id="trilhosNormais">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
